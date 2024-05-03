@@ -1,0 +1,136 @@
+/* universal */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  font-family: Calibri;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+ol {
+  list-style-type: none;
+}
+
+header li {
+  font-weight: bold;
+  font-size: 12pt;
+}
+header span {
+  font-family: "Monotype Corsiva", cursive;
+  font-size: 24pt;
+}
+
+table {
+  font-family: Verdana;
+  font-size: 12px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1.5px solid black;
+  text-align: center;
+  padding: 5px;
+}
+
+/* specific */
+.first {
+  margin: 12px;
+}
+
+.first .educational {
+  display: grid;
+  row-gap: 10px;
+}
+
+.first .title {
+  font-family: "Lucida Console", monospace;
+  font-size: 20pt;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.first .level {
+  font-family: "Perpetua Titling MT", serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.first .degree {
+  font-family: Verdana;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.first .details span {
+  font-family: Verdana;
+  font-size: 12px;
+}
+
+.second {
+  margin: 12px;
+}
+
+.second .title {
+  font-family: "Lucida Console", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.second .subtitle {
+  font-family: Verdana;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.second .details {
+  font-family: Verdana;
+  font-size: 12px;
+}
+
+.third {
+  margin: 12px;
+}
+
+.third .title {
+  font-family: "Lucida Console", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.third .subtitle {
+  font-family: Verdana;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.third .details {
+  font-family: Verdana;
+  font-size: 12px;
+}
+
+.table {
+  margin: 12px;
+  display: grid;
+  row-gap: 10px;
+}
+
+.table span {
+  font-family: "Lucida Console", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+}

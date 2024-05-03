@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telecall Institure of Technology Inc. - Registration</title>
+    <link rel="stylesheet" href="register.css" />
+    <link rel="icon" href="/img/logo-3.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="heading">
+        Telecall Institute of Technology Registration Form
+      </header>
+      <form action="#">
+        <div class="input-box">
+          <div class="input-field field">
+            <input
+              type="text"
+              placeholder="Full Name"
+              id="name"
+              class="item"
+              autocomplete="off"
+            />
+            <div class="error-txt">Full Name can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input
+              type="email"
+              placeholder="Email Address"
+              id="email"
+              class="item"
+              autocomplete="off"
+            />
+            <div class="error-txt email">Email Address can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input
+              type="text"
+              placeholder="Phone Number"
+              id="phone"
+              class="item"
+              autocomplete="off"
+            />
+            <div class="error-txt">Phone Number can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              class="item"
+              autocomplete="off"
+            />
+            <div class="error-txt">Password can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input
+              type="password"
+              placeholder="Confirm Passowrd"
+              id="confirmPassword"
+              class="item"
+              autocomplete="off"
+            />
+            <div class="error-txt">Password can't be blank</div>
+          </div>
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      const form = document.querySelector("form");
+      const fullName = document.getElementById("name");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+
+      function sendEmail() {
+        const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone Number: ${phone.value}<br> Subject: ${subject.value}<br> Message: ${mess.value}<br>`;
+
+        Email.send({
+          SecureToken: "2683f32f-02fe-46f5-8df4-0b48857154f6",
+          To: "jedesguerra37@gmail.com",
+          From: "jedesguerra37@gmail.com",
+          Subject: subject.value,
+          Body: bodyMessage,
+        }).then((message) => {
+          if (message == "OK") {
+            Swal.fire({
+              title: "Success!",
+              text: "Message sent successfully!",
+              icon: "success",
+              customClass: {
+                popup: "swal-custom-size",
+              },
+            });
+          }
+        });
+      }
+
+      function checkInputs() {
+        const items = document.querySelectorAll(".item");
+
+        for (const item of items) {
+          if (item.value == "") {
+            item.classList.add("error");
+            item.parentElement.classList.add("error");
+          }
+
+          if (items[1].value != "") {
+            checkEmail();
+          }
+
+          items[1].addEventListener("keyup", () => {
+            checkEmail();
+          });
+
+          item.addEventListener("keyup", () => {
+            if (item.value != "") {
+              item.classList.remove("error");
+              item.parentElement.classList.remove("error");
+            } else {
+              item.classList.add("error");
+              item.parentElement.classList.add("error");
+            }
+          });
+        }
+      }
+
+      function checkEmail() {
+        const emailRegex =
+          /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
+        const errorTxtEmail = document.querySelector(".error-txt.email");
+
+        if (!email.value.match(emailRegex)) {
+          email.classList.add("error");
+          email.parentElement.classList.add("error");
+
+          if (email.value != "") {
+            errorTxtEmail.innerText = "Enter a valid email address";
+          } else {
+            errorTxtEmail.innerText = "Email Address can't be blank";
+          }
+        } else {
+          email.classList.remove("error");
+          email.parentElement.classList.remove("error");
+        }
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        checkInputs();
+
+        if (
+          !fullName.classList.contains("error") &&
+          !email.classList.contains("error") &&
+          !phone.classList.contains("error") &&
+          !password.classList.contains("error") &&
+          !confirmPassword.classList.contains("error")
+        ) {
+          sendEmail();
+
+          form.reset();
+          return false;
+        }
+      });
+    </script>
+  </body>
+</html>

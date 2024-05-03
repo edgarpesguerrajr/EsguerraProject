@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telecall Laguna</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+      :root {
+        --main-color: #2374cf;
+        --black: #13131a;
+        --bg: #010103;
+        --border: 0.1rem solid rgba(255, 255, 255, 0.3);
+      }
+
+      * {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: 0.2s linear;
+      }
+
+      html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+        scroll-padding-top: 9rem;
+        scroll-behavior: smooth;
+      }
+
+      html::-webkit-scrollbar {
+        width: 0.8rem;
+      }
+
+      html::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      html::-webkit-scrollbar-thumb {
+        background: #fff;
+        border-radius: 5rem;
+      }
+
+      body {
+        background: var(--bg);
+      }
+
+      section {
+        padding: 2rem 7%;
+      }
+
+      .heading {
+        text-align: center;
+        color: #fff;
+        text-transform: uppercase;
+        padding-bottom: 3.5rem;
+        font-size: 4rem;
+      }
+
+      .heading span {
+        color: var(--main-color);
+        text-transform: uppercase;
+      }
+
+      .btn {
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 0.9rem 3rem;
+        font-size: 1.7rem;
+        color: #fff;
+        background: var(--main-color);
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        letter-spacing: 0.2rem;
+      }
+
+      .header {
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 7%;
+        border-bottom: var(--border);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+
+      .header .navbar a {
+        margin: 1rem;
+        font-size: 1.6rem;
+        color: #fff;
+      }
+
+      .header .navbar a:hover {
+        color: var(--main-color);
+        border-bottom: 0.1rem solid var(--main-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .header .icons div {
+        color: #fff;
+        cursor: pointer;
+        font-size: 2.5rem;
+        margin-left: 2rem;
+      }
+
+      .header .icons div:hover {
+        color: var(--main-color);
+      }
+
+      #menu-btn {
+        display: none;
+      }
+
+      .header .search-form {
+        position: absolute;
+        top: 115%;
+        right: 7%;
+        background: #fff;
+        width: 50rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        transform: scale(0);
+        transform-origin: top;
+      }
+
+      .header .search-form.active {
+        transform: scale(1);
+      }
+
+      .header .search-form input {
+        height: 100%;
+        width: 100%;
+        font-size: 1.6rem;
+        color: var(--black);
+        padding: 1rem;
+        text-transform: none;
+      }
+
+      .header .search-form label {
+        cursor: pointer;
+        font-size: 2.2rem;
+        margin-right: 1.5rem;
+        color: var(--black);
+      }
+
+      .header .search-form label:hover {
+        color: var(--main-color);
+      }
+
+      .home {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: url(/image/Polygon\ Luminary.svg) no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .home .content {
+        max-width: 90rem;
+      }
+
+      .home .content h2 {
+        font-size: 6rem;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      .home .content .text-animate {
+        position: relative;
+        width: 51rem;
+      }
+
+      .home .content h3 {
+        position: relative;
+        font-size: 2.7rem;
+        font-weight: 700;
+        color: transparent;
+        -webkit-text-stroke: 0.7px var(--main-color);
+      }
+
+      .home .content p {
+        font-size: 2rem;
+        font-weight: lighter;
+        line-height: 1.8;
+        padding: 1rem 0;
+        color: #eee;
+      }
+
+      .footer {
+        background: var(--black);
+        text-align: center;
+      }
+
+      .footer .logo img {
+        height: 10rem;
+      }
+
+      .footer .share {
+        padding: 1rem 0;
+      }
+
+      .footer .share a {
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        font-size: 2rem;
+        color: #fff;
+        border: var(--border);
+        margin: 0.3rem;
+        border-radius: 50%;
+      }
+
+      .footer .share a:hover {
+        background-color: var(--main-color);
+      }
+
+      .footer .links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 2rem 0;
+        gap: 1rem;
+      }
+
+      .footer .links a {
+        padding: 0.7rem 2rem;
+        color: #fff;
+        border: var(--border);
+        font-size: 2rem;
+      }
+
+      .footer .links a:hover {
+        background: var(--main-color);
+      }
+
+      .footer .credit {
+        font-size: 2rem;
+        color: #fff;
+        font-weight: lighter;
+        padding: 1.5rem;
+      }
+
+      .footer .credit span {
+        color: var(--main-color);
+      }
+
+      /* media quries */
+      @media (max-width: 991px) {
+        html {
+          font-size: 55%;
+        }
+
+        .header {
+          padding: 1.5rem 2rem;
+        }
+
+        section {
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        #menu-btn {
+          display: inline-block;
+        }
+
+        .header .navbar {
+          position: absolute;
+          top: 100%;
+          right: -100%;
+          background: #fff;
+          width: 30rem;
+          height: calc(100vh - 9.5rem);
+        }
+
+        .header .navbar.active {
+          right: 0;
+        }
+
+        .header .navbar a {
+          color: var(--black);
+          display: block;
+          margin: 1.5rem;
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
+
+        .header .search-form {
+          width: 90%;
+          right: 2rem;
+        }
+
+        .home {
+          background-position: left;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .home .content h3 {
+          font-size: 4.5rem;
+        }
+
+        .home .content p {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 450px) {
+        html {
+          font-size: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header section starts -->
+
+    <header class="header">
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#qualification_offered">Qualification Offered</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#career">Career</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+      </div>
+
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box" class="fas fa-search"></label>
+      </div>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts here -->
+
+    <section class="home" id="home">
+      <div class="content">
+        <h2>Telecall Institute of Technology Incorporated</h2>
+        <h3 class="text-animate">Elevate your skills, elevate your future!</h3>
+        <p>
+          We are an institution accredited by TESDA that offers Training Courses
+          for Technical and Vocational Education (TVET) under Technical
+          Education and Skills Development Authority (TESDA) and Commission on
+          Higher Education (CHED).
+        </p>
+        <a href="#" class="btn">register now</a>
+      </div>
+    </section>
+
+    <!-- home section ends here -->
+
+    <!-- footer section starts here -->
+
+    <section class="footer">
+      <a href="#" class="logo"><img src="/image/image.png" alt="" /></a>
+      <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-twitter"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+        <a href="#" class="fab fa-github"></a>
+      </div>
+
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#qualification_offered">Qualification Offered</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#career">Career</a>
+        <a href="#about">About</a>
+      </div>
+
+      <div class="credit">
+        created by <span>mr. esguerra</span> | Elsol Plaza, Brgy. 2, Cabuyao,
+        Laguna | 0912 345 6789
+      </div>
+    </section>
+
+    <!-- footer section ends here -->
+    <script>
+      let navbar = document.querySelector(".navbar");
+
+      document.querySelector("#menu-btn").onclick = () => {
+        navbar.classList.toggle("active");
+        searchForm.classList.remove("active");
+        cartItem.classList.remove("active");
+      };
+
+      let searchForm = document.querySelector(".search-form");
+
+      document.querySelector("#search-btn").onclick = () => {
+        searchForm.classList.toggle("active");
+        navbar.classList.remove("active");
+        cartItem.classList.remove("active");
+      };
+
+      window.onscroll = () => {
+        navbar.classList.remove("active");
+        searchForm.classList.remove("active");
+        cartItem.classList.remove("active");
+      };
+    </script>
+  </body>
+</html>
